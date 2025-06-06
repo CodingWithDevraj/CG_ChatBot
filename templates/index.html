@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Chatbot</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-content">
+                <div class="bot-info">
+                    <div class="bot-avatar">
+                        <img src="static/img.jpg" alt="College Gate Logo" class="avatar">
+                    </div>
+                    <div class="bot-status">
+                        <h1>CollegeGate Assistant</h1>
+                        <span class="status">Online</span>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+        <div class="messages-container" id="messages-container">
+            <!-- Messages will be added here dynamically -->
+        </div>
+        <div class="typing-indicator hidden" role="status" aria-label="CollegeGate Assistant is typing">
+            <div class="typing-bubble" aria-hidden="true">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="input-wrapper">
+                <input type="text" id="message-input" placeholder="Type your message here..." autocomplete="off">
+                <button id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const messageInput = document.getElementById("message-input");
+            const messagesContainer = document.getElementById("messages-container");
+            const sendButton = document.getElementById("send-button");
+            const themeToggle = document.getElementById("theme-toggle");
+            const typingIndicator = document.querySelector(".typing-indicator");
+
+            // Theme handling
+            let isDarkMode = localStorage.getItem('darkMode') === 'true';
+            
+            function updateTheme() {
+                document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+                themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                localStorage.setItem('darkMode', isDarkMode);
+            }
+
+            // Initialize theme
+            updateTheme();
+
+            themeToggle.addEventListener("click", () => {
+                isDarkMode = !isDarkMode;
+                updateTheme();
+            });
+
+            function formatTime() {
+                const now = new Date();
+                return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            }
+
+            function createMessageElement(text, isUser) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.classList.add(isUser ? 'user' : 'bot');
+                messageDiv.textContent = text;
+                messageDiv.setAttribute('data-time', formatTime());
+                return messageDiv;
+            }
+
+            async function handleUserMessage(event) {
+                if (event) event.preventDefault();
+                
+                const messageText = messageInput.value.trim();
+                if (!messageText) return;
+
+                // Add user message
+                const userMessageElement = createMessageElement(messageText, true);
+                messagesContainer.appendChild(userMessageElement);
+                messageInput.value = '';
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                // Show typing indicator with animation
+                typingIndicator.classList.remove('hidden');
+
+                try {
+                    const response = await fetch("/chat", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ message: messageText })
+                    });
+
+                    const data = await response.json();
+
+                    // Hide typing indicator after a slight delay
+                    setTimeout(() => {
+                        typingIndicator.classList.add('hidden');
+                        const botMessageElement = createMessageElement(data.reply, false);
+                        messagesContainer.appendChild(botMessageElement);
+                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    }, 1000);
+                } catch (error) {
+                    typingIndicator.classList.add('hidden');
+                    const errorMessageElement = createMessageElement("Sorry, I'm having trouble connecting right now. Please try again later.", false);
+                    errorMessageElement.classList.add('error');
+                    messagesContainer.appendChild(errorMessageElement);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }
+            }
+
+            // Event listeners
+            sendButton.addEventListener("click", handleUserMessage);
+            
+            messageInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    handleUserMessage(e);
+                }
+            });
+
+            // Focus input on load
+            messageInput.focus();
+
+            // Add initial welcome message
+            setTimeout(() => {
+                const welcomeMessage = createMessageElement("Hello! I'm your CollegeGate Assistant. How can I help you today?", false);
+                messagesContainer.appendChild(welcomeMessage);
+            }, 500);
+        });
+    </script>
+</body>
+</html> 

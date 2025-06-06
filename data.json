@@ -1,0 +1,257 @@
+[
+    {
+        "id": 1,
+        "name": "Graphic Era University",
+        "shortName": "GEU",
+        "type": "Private",
+        "rating": 4.6,
+        "accreditation": "NAAC A+",
+        "location": "Dehradun, Uttarakhand",
+        "established": 1993,
+        "image": "college_images/1576563781phpQj94TQ.jpeg",
+        "logoImg": "https://www.geu.ac.in/content/dam/geu/geu-logo.svg",
+        "description": "Graphic Era University, founded by Prof. Kamal Ghanshala, started as a computer center in 1993 and evolved into a prestigious deemed university. Located in Clement Town, Dehradun, the 25-acre campus is bordered by Rajaji National Park and Clement Town Cantonment. The university holds NAAC A+ accreditation and ranks 52nd nationally in engineering (NIRF 2024).",
+        "facilities": [
+            "Smart Classrooms",
+            "Research Labs",
+            "High-Speed Wi-Fi Campus",
+            "World-Class Hostels",
+            "Sports Complex",
+            "Technology Business Incubator",
+            "Multiple Cafeterias",
+            "Indoor & Outdoor Auditoriums"
+        ],
+        "ranking": "Ranked #52 in University Category by NIRF 2024",
+        "website": "https://www.geu.ac.in/",
+        "contact": "+91 - 135 - 264 2222",
+        "courses": [
+            {
+                "name": "B.Tech in Computer Science and Engineering",
+                "duration": "4 Years",
+                "fees": 354730,
+                "specialization": "Core CSE"
+            },
+            {
+                "name": "B.Tech in CSE",
+                "duration": "4 Years",
+                "fees": 354730,
+                "specialization": "Artificial Intelligence & Machine Learning"
+            },
+            {
+                "name": "B.Tech in CSE",
+                "duration": "4 Years",
+                "fees": 354730,
+                "specialization": "Data Science"
+            },
+            {
+                "name": "B.Tech in CSE",
+                "duration": "4 Years",
+                "fees": 354730,
+                "specialization": "Cloud Computing & Virtualization"
+            },
+            {
+                "name": "B.Tech in CSE",
+                "duration": "4 Years",
+                "fees": 354730,
+                "specialization": "Cyber Security & Forensics"
+            },
+            {
+                "name": "B.Tech in Electronics & Communication",
+                "duration": "4 Years",
+                "fees": 354730
+            },
+            {
+                "name": "B.Tech in Mechanical Engineering",
+                "duration": "4 Years",
+                "fees": 354730
+            },
+            {
+                "name": "B.Tech in Civil Engineering",
+                "duration": "4 Years",
+                "fees": 354730
+            },
+            {
+                "name": "B.Tech in Electrical Engineering",
+                "duration": "4 Years",
+                "fees": 354730
+            },
+            {
+                "name": "BBA",
+                "duration": "3 Years",
+                "fees": 95000,
+                "specialization": "General"
+            },
+            {
+                "name": "BBA",
+                "duration": "3 Years",
+                "fees": 95000,
+                "specialization": "Digital Marketing"
+            },
+            {
+                "name": "BBA",
+                "duration": "3 Years",
+                "fees": 95000,
+                "specialization": "Business Analytics"
+            },
+            {
+                "name": "MBA",
+                "duration": "2 Years",
+                "fees": 180000,
+                "specialization": "Marketing"
+            },
+            {
+                "name": "MBA",
+                "duration": "2 Years",
+                "fees": 180000,
+                "specialization": "Finance"
+            },
+            {
+                "name": "MBA",
+                "duration": "2 Years",
+                "fees": 180000,
+                "specialization": "HR"
+            },
+            {
+                "name": "MBA",
+                "duration": "2 Years",
+                "fees": 180000,
+                "specialization": "Business Analytics"
+            },
+            {
+                "name": "BCA",
+                "duration": "3 Years",
+                "fees": 85000
+            },
+            {
+                "name": "MCA",
+                "duration": "2 Years",
+                "fees": 120000
+            },
+            {
+                "name": "B.Sc",
+                "duration": "3 Years",
+                "fees": 75000,
+                "specialization": "Physics"
+            },
+            {
+                "name": "B.Sc",
+                "duration": "3 Years",
+                "fees": 75000,
+                "specialization": "Chemistry"
+            },
+            {
+                "name": "B.Sc",
+                "duration": "3 Years",
+                "fees": 75000,
+                "specialization": "Mathematics"
+            },
+            {
+                "name": "B.Sc",
+                "duration": "3 Years",
+                "fees": 85000,
+                "specialization": "Agriculture"
+            },
+            {
+                "name": "B.Sc",
+                "duration": "3 Years",
+                "fees": 85000,
+                "specialization": "Biotechnology"
+            },
+            {
+                "name": "B.Com",
+                "duration": "3 Years",
+                "fees": 75000,
+                "specialization": "Honours"
+            },
+            {
+                "name": "B.Com",
+                "duration": "3 Years",
+                "fees": 65000,
+                "specialization": "Regular"
+            },
+            {
+                "name": "BA",
+                "duration": "3 Years",
+                "fees": 65000,
+                "specialization": "Economics"
+            },
+            {
+                "name": "BA",
+                "duration": "3 Years",
+                "fees": 65000,
+                "specialization": "English"
+            },
+            {
+                "name": "BBA-LLB",
+                "duration": "5 Years",
+                "fees": 125000,
+                "specialization": "Integrated"
+            },
+            {
+                "name": "LLB",
+                "duration": "3 Years",
+                "fees": 95000
+            },
+            {
+                "name": "Ph.D",
+                "duration": "3-5 Years",
+                "fees": 150000,
+                "specialization": "Various Disciplines"
+            },
+            {
+                "name": "M.Tech in CSE",
+                "duration": "2 Years",
+                "fees": 120000
+            },
+            {
+                "name": "M.Tech in Data Science",
+                "duration": "2 Years",
+                "fees": 120000
+            },
+            {
+                "name": "M.Tech in AI & ML",
+                "duration": "2 Years",
+                "fees": 120000
+            },
+            {
+                "name": "M.Tech in ECE",
+                "duration": "2 Years",
+                "fees": 120000
+            },
+            {
+                "name": "M.Tech in Mechanical",
+                "duration": "2 Years",
+                "fees": 120000
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "COER University",
+        "shortName": "COER",
+        "type": "Private",
+        "rating": 4.5,
+        "accreditation": "NAAC A+",
+        "established": 1998,
+        "location": "Roorkee, Uttarakhand",
+        "description": "College of Engineering Roorkee (COER) is a premier engineering institution established in 1998. Located in Roorkee, it offers high-quality technical education with state-of-the-art infrastructure and experienced faculty. The university focuses on holistic development through industry collaborations, research opportunities, and practical training.",
+        "establishment": "1998",
+        "image": "college_images/coer.webp",
+        "reviews": 120,
+        "fees": "₹2.5L - ₹4L per year",
+        "courses": [
+            "B.Tech",
+            "M.Tech",
+            "MBA",
+            "BCA",
+            "MCA"
+        ],
+        "facilities": [
+            "Library",
+            "Sports Complex",
+            "Hostel",
+            "Labs",
+            "Cafeteria"
+        ]
+    }
+]
