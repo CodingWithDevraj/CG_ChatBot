@@ -35,7 +35,7 @@ def save_chat(user_input, reply):
     }
     chat_collection.insert_one(chat_data)
 
-@app.route("https://cg-chatbot-l8m8.onrender.com/chat", methods=["POST"])
+@app.route("/chat", methods=["POST"])
 def chat():
     user_input = request.json.get("message")
     print(f"Received user input: {user_input}")  # Debugging log
