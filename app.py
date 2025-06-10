@@ -55,10 +55,10 @@ def chat():
 
      Response Rules:
         Check JSON data first for college information.
-        Keep responses concise (100-150 words).
+        Keep responses concise (100-130 words).
         Use a professional yet friendly tone.
-        Format important points using bullet points (•).
-        Do NOT use emojis or unnecessary symbols (*, -,**).
+        do not give any asterik in answer or reply.
+        Do NOT use emojis or unnecessary symbols (*,-,**).
 
      Answer Structure:
     - If asking about a specific college:  
