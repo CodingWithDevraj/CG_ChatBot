@@ -53,30 +53,30 @@ def chat():
 
     Here is the JSON data: {website_info}
 
-     **Response Rules:**
-        **Check JSON data first for college information**.
-        **Keep responses concise (100-150 words)**.
-        **Use a professional yet friendly tone**.
-        **Format important points using bullet points (•)**.
-        **Do NOT use emojis or unnecessary symbols (*, -).**
+     Response Rules:
+        Check JSON data first for college information.
+        Keep responses concise (100-150 words).
+        Use a professional yet friendly tone.
+        Format important points using bullet points (•).
+        Do NOT use emojis or unnecessary symbols (*, -,**).
 
-     **Answer Structure:**
-    - **If asking about a specific college:**  
+     Answer Structure:
+    - If asking about a specific college:  
       Use only JSON data  
       Highlight courses, facilities, placements  
       Include college website if available  
 
-    - **If asking about admissions/general info:**  
+    - If asking about admissions/general info:  
       Provide brief advice  
       Suggest visiting CollegeGate website  
 
-    - **If data is missing:**  
+    - If data is missing:  
       Politely acknowledge it  
       Suggest CollegeGate website/contact  
 
-    **User Query:** {user_input}
+    User Query: {user_input}
 
-    Provide a **clear, structured, and engaging** response.
+    Provide a clear, structured, and engaging response.
     """
 
     try:
