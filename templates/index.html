@@ -79,7 +79,7 @@
                 const messageDiv = document.createElement('div');
                 messageDiv.classList.add('message');
                 messageDiv.classList.add(isUser ? 'user' : 'bot');
-                messageDiv.textContent = text;
+                messageDiv.innerHTML = text;
                 messageDiv.setAttribute('data-time', formatTime());
                 return messageDiv;
             }
