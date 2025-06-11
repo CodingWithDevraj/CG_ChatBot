@@ -36,6 +36,12 @@ def save_chat(user_input, reply):
     }
     chat_collection.insert_one(chat_data)
 
+
+def make_links_clickable(text):
+    # Remove trailing punctuation and wrap URLs in <a> tags
+    url_pattern = r'(https?://[^\s]+?)(?=[.,!?]?\s|$)'
+    return re.sub(url_pattern, r'<a href="\1" target="_blank">\1</a>', text)
+
 @app.route("/chat", methods=["POST"])
 def chat():
     user_input = request.json.get("message")
@@ -80,19 +86,14 @@ Provide a clear, structured, and informative response.
     try:
         model = genai.GenerativeModel("gemini-2.0-flash")
         response = model.generate_content(full_prompt)
-        reply = response.text.strip()
+        reply_raw = response.text.strip()
+        reply = make_links_clickable(reply_raw)
         
         reply = reply.replace(
         "+91-9193993693",
         '<a href="tel:+919193993693">+91-9193993693</a>'
         )
 
-        # Make URLs clickable but strip trailing punctuation like . , )
-        reply = re.sub(
-    r"(https?://[^\s<>)]+)([.,)]?)",
-    lambda m: f'<a href="{m.group(1)}" target="_blank">{m.group(1)}</a>{m.group(2)}',
-    reply
-)
 
     except Exception as e:
         reply = f"Error: {str(e)}"
