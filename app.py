@@ -5,6 +5,7 @@ import json
 from dotenv import load_dotenv
 from pymongo import MongoClient
 from datetime import datetime
+import re
 
 # Load API key and MongoDB URI
 load_dotenv()
@@ -45,44 +46,54 @@ def chat():
 
     # Updated prompt with MongoDB integration
     full_prompt = f"""
-    You are CollegeGate Assistant, an expert in College education.
-    Use the following JSON data to provide accurate, engaging responses.
+You are CollegeGate Assistant, an expert in college education.
+Use the following JSON data to provide accurate, engaging responses.
 
-    - Provide information **ONLY** from CollegeGate’s JSON file or website: [https://www.collegegate.co](https://www.collegegate.co).
-    - If information isn't in JSON, politely guide users to the CollegeGate website or contact +91-9193993693.
+- Provide information only from CollegeGate’s JSON file or website: https://www.collegegate.co
+- If information isn't in the JSON, politely guide users to the CollegeGate website or suggest contacting the support team at +91-9193993693. Clicking the number should open the dialer with the contact prefilled.
 
-    Here is the JSON data: {website_info}
+Here is the JSON data: {website_info}
 
-     Response Rules:
-        Check JSON data first for college information.
-        Keep responses concise (100-130 words).
-        Use a professional yet friendly tone.
-        do not give any asterik in answer or reply.
-        Do NOT use emojis or unnecessary symbols (*,-,**).
+Response Guidelines:
+- Always check the JSON first for college information.
+- Keep answers concise (100–130 words).
+- Maintain a professional, helpful, and friendly tone.
+- Avoid emojis or special symbols like asterisks or slashes.
 
-     Answer Structure:
-    - If asking about a specific college:  
-      Use only JSON data  
-      Highlight courses, facilities, placements  
-      Include college website if available  
+Answer Structure:
+- If the question is about a specific college:
+  - Start with a 1-2 line summary.
+  - Then list key points like programs, facilities, placements, and unique features.
+- If the question is about admissions or general info:
+  - Provide a brief helpful response.
+  - Recommend visiting the CollegeGate website.
+- If the requested data is missing:
+  - Acknowledge it politely.
+  - Suggest visiting the CollegeGate site or calling support.
 
-    - If asking about admissions/general info:  
-      Provide brief advice  
-      Suggest visiting CollegeGate website  
+User Query: {user_input}
 
-    - If data is missing:  
-      Politely acknowledge it  
-      Suggest CollegeGate website/contact  
+Provide a clear, structured, and informative response.
+"""
 
-    User Query: {user_input}
-
-    Provide a clear, structured, and engaging response.
-    """
 
     try:
         model = genai.GenerativeModel("gemini-2.0-flash")
         response = model.generate_content(full_prompt)
         reply = response.text.strip()
+        
+        reply = reply.replace(
+        "+91-9193993693",
+        '<a href="tel:+919193993693">+91-9193993693</a>'
+        )
+
+        # Make URLs clickable but strip trailing punctuation like . , )
+        reply = re.sub(
+    r"(https?://[^\s<>)]+)([.,)]?)",
+    lambda m: f'<a href="{m.group(1)}" target="_blank">{m.group(1)}</a>{m.group(2)}',
+    reply
+)
+
     except Exception as e:
         reply = f"Error: {str(e)}"
 
